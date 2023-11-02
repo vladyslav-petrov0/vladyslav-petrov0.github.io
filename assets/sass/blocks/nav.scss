@@ -1,0 +1,127 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+
+    @include media(950px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        z-index: 998;
+
+        width: 100vw;
+        height: 100%;
+
+        max-height: 0;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $colorSec1;
+        overflow: hidden;
+
+        transition: max-height 0.8s ease;
+
+        box-shadow: inset -5px -199px 16px -163px rgba(51,51,51,1);
+    }
+
+    &.showed {
+        max-height: 100vh;
+    }
+
+    &:before {
+        display: none;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        z-index: 999;
+
+        content: '';
+
+        width: 100%;
+        height: 0;
+        box-shadow: -4px 10px 54px 80px rgba(51,51,51,1);
+
+        @include media(950px) {
+            display: block;
+        }
+    }
+}
+
+.nav__sec {
+    display: flex;
+
+    border-bottom: 1px solid $colorSec3;
+
+    li {
+        display: flex;
+
+        width: 133px;
+        height: 100px;
+
+        @include media(1320px) {
+            width: 100px;
+            height: 90px;
+        }
+
+        @include media(1100px) {
+            width: 90px;
+            height: 80px;
+        }
+
+        @include media(950px) {
+            width: auto;
+            height: auto;
+
+            margin-bottom: 5px;
+        }
+
+        &:last-child {
+            @include media(950px) {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        height: 100%;
+
+        text-transform: uppercase;
+
+        transition: color 0.4s ease, background 0.4s ease;
+        color: $color1;
+
+        &:hover {
+            color: $color3;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        @include media(950px) {
+            padding: 15px 10px;
+        }
+    }
+
+    @include media(950px) {
+        flex-direction: column;
+
+        transform: translateY(5%);
+        transition: opacity 1s ease;
+
+        border-bottom: none;
+        opacity: 0.5;
+    }
+}
+
+.nav.showed .nav__sec {
+    @include media(950px) {
+        opacity: 1;
+    }
+}

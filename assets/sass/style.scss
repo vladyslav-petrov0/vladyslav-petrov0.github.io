@@ -1,0 +1,45 @@
+// Import styles and mixins
+
+@import 'blocks/reset';
+@import 'blocks/vars';
+@import 'blocks/media';
+
+
+
+// Default styles
+
+body {
+    font-family: $font1;
+
+    overflow: hidden;
+
+    @include media(1024px) {
+        overflow: visible;
+    }
+}
+
+// Import blocks 
+
+@import 'blocks/container';
+@import 'blocks/header';
+@import 'blocks/nav';
+@import 'blocks/burger';
+@import 'blocks/intro';
+@import 'blocks/arrow-down';
+@import 'blocks/subtitle';
+@import 'blocks/title';
+@import 'blocks/btn';
+@import 'blocks/social';
+@import 'blocks/wave-effect';
+@import 'blocks/section';
+@import 'blocks/text';
+@import 'blocks/date';
+@import 'blocks/form';
+@import 'blocks/select';
+@import 'blocks/scrollbar';
+@import 'blocks/slider';
+@import 'blocks/menu';
+@import 'blocks/contacts';
+@import 'blocks/notification';
+@import 'blocks/gallery';
+@import 'blocks/modal';

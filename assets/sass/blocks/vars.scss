@@ -1,0 +1,134 @@
+// == VARS ==
+
+$font1: 'Open Sans', sans-serif;
+$font2: 'Texturina', serif;
+
+$color1: #fff;
+$color2: #E8C300;
+$color3: #000;
+
+$colorSec1: #333333;
+$colorSec2: #E5E5E5;
+$colorSec3: rgba(255, 255, 255, 0.2);
+
+$borderRad1: 5px;
+
+$filter1: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.5));
+$filter2: drop-shadow(0px 0px 50px #000000);
+
+
+// == MIXINS ==
+
+@mixin noSelect {
+    user-select: none;
+    pointer-events: none;
+}
+
+// text
+
+@mixin text($param1, $param2, $param3) {
+    font-family: $param1;
+    font-style: $param2;
+    font-weight: $param3;
+}
+
+
+@mixin animated($param) {
+    &.animated {
+        transform: $param; 
+        opacity: 1;
+    }
+}
+
+@mixin animTrans($param1, $param2, $param3) {
+    transition: all $param1 ease $param2;
+    transform: $param3; 
+    opacity: 0;
+}
+
+/* == this project ==*/
+
+@mixin square($param) {
+    &:after {
+        position: absolute;
+
+        content: '';
+        width: 250px;
+        height: 250px;
+
+        top: 50%;
+
+        @if $param == left {
+            left: -125px;
+        } @else if $param == right {
+            right: -125px;
+        }
+
+        transform: translateY(-50%);
+
+        border: 20px solid $color2;
+
+        @if $param == left {
+            filter: drop-shadow(0px 0px 100px #000000);
+        } @else if $param == right {
+            filter: drop-shadow(0px 0px 100px rgba(0, 0, 0, 0.5));
+        }
+
+        border-radius: $borderRad1;
+
+        @include media(1200px) {
+            width: 200px;
+            height: 200px;
+
+            @if $param == left {
+                left: -100px;
+            } @else if $param == right {
+                right: -100px;
+            }
+        }
+
+        @include media(1024px) {
+            width: 125px;
+            height: 125px;
+
+            border: 13px solid $color2;
+
+            @if $param == left {
+                left: -60px;
+            } @else if $param == right {
+                right: -60px;
+            }
+        }
+
+        @include media(400px) {
+            width: 100px;
+            height: 100px;
+
+
+            @if $param == left {
+                left: -50px;
+            } @else if $param == right {
+                right: -50px;
+            }
+        }
+    }
+}
+
+@mixin bgBlack {
+    position: relative;
+    z-index: 10;
+
+    &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 11;
+
+        content: '';
+        width: 100%;
+        height: 100%;
+
+        background-color: $color3;
+        opacity: 0.6;
+    }
+}

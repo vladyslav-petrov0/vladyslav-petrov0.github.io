@@ -1,0 +1,156 @@
+.form {
+    display: flex;
+    flex-wrap: wrap;
+
+    max-width: 565px;
+    margin: 0 auto;
+
+    &--contact {
+        max-width: 100%;
+        align-items: center;
+
+        @include media(550px) {
+            width: 100%;
+        }
+    }
+}
+
+.form__elem {
+    position: relative;
+
+    @include text($font1, normal, normal);
+    font-size: 14px;
+    line-height: 19px;
+
+    width: 277px;
+    height: 60px;
+
+    padding: 25px 15px 20px 15px;
+    
+    display: flex;
+    align-items: center;
+
+    color: $color3;
+    background-color: $colorSec2;
+    border-radius: $borderRad1;
+
+    @include media(1200px) {
+        width: 160px;
+    }
+
+    @include media(550px) {
+        width: 100%;
+    }
+
+    &--message {
+        resize: none;
+        overflow: auto;
+    }
+
+    &--contact {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.form__section {
+    position: relative;
+
+    margin: 0 10px 10px 0;
+
+    &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        content: '';
+
+        width: 0%;
+        height: 3px;
+        
+        background-color: $color2;
+
+        transition: all 0.5s ease;
+    }
+
+    &.selected:after {
+        width: 100%;
+    }
+
+    &.wrong-input:after {
+        background-color: #db2929;
+    }
+
+    @include media(550px) {
+        flex: 1 1 45%;
+    }
+}
+
+.form__section--book {
+    &:nth-child(even) {
+        @media (min-width: 1201px) {
+            margin-right: 0;
+        }
+
+        @include media(550px) {
+            margin-right: 0;
+        }
+    }
+
+    &:nth-child(3n) {
+        @include mediaX(551px, 1200px) {
+            margin-right: 0;
+        }
+    }
+}
+
+.form__section--contact {
+    &--message {
+        flex: 1 1 100%;
+
+        margin-right: 0;
+        height: 120px;
+    }
+
+    &--phone {
+        margin-right: 0;
+    }
+
+    &:nth-child(-n+3) {
+        flex: 1 1 30%;
+
+        @include media(550px) {
+            flex: 1 1 100%;
+        }
+    }
+
+    @include media(550px) {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+.form__label {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+
+    z-index: 20;
+
+    @include text($font1, normal, normal);
+    font-size: 14px;
+    line-height: 19px;
+
+    color: rgba(51, 51, 51, 0.5);
+
+    transition: all 0.2s ease;
+
+    @include noSelect;
+
+    &.chosen {
+        transform: translateY(-17px);
+
+        font-size: 12px;
+        line-height: 19px;
+    }
+}

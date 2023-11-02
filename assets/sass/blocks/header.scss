@@ -1,0 +1,116 @@
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    width: 100%;
+
+    @include text($font1, normal, bold);
+    font-size: 12px;
+    line-height: 18px;
+
+    @include media(950px) {
+        height: 80px;
+
+        font-size: 28px;
+        line-height: 28px;
+    }
+
+    @include media(425px) {
+        font-size: 22px;
+        line-height: 22px;
+    }
+}
+
+.header__body {
+    position: relative;
+
+    width: 100%;
+
+    &:before, &:after {
+        display: none;
+
+        position: absolute;
+        bottom: 0;
+
+        content: '';
+
+        height: 1px;
+        width: 39%;
+        background-color: hsla(0,0%,100%,.2);
+
+        @include media(950px) {
+            display: block;
+        }
+
+        @include media(450px) {
+            display: none;
+        }
+    }
+
+    &:before {
+        left: 10px;
+    }
+
+    &:after {
+        right: 10px;
+        z-index: -1;
+    }
+
+    @include media(1320px) {
+        max-width: 1010px;
+        margin: 0 auto;
+    }
+
+    @include media(1100px) {
+        max-width: 900px;
+    }
+
+    @include media(950px) {
+        height: 80px;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        padding-right: 10px;
+    }
+}
+
+.header__logo {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+    
+    @include noSelect;
+
+    @include media(1320px) {
+        transform: translateX(-50%) scale(0.9);
+        top: 15px;
+    }
+
+    @include media(1100px) {
+        top: 5px;
+        transform: translateX(-50%) scale(0.8);
+    }
+
+    @include media(350px) {
+        top: 0px;
+        transform: translateX(-50%) scale(0.7);
+    }
+
+    @media (max-height: 550px) {
+       display: none;
+    }
+
+    &.showed {
+        @include media(950px) {
+            z-index: 999;
+        }
+    }
+
+    
+}
